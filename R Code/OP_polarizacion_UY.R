@@ -1,8 +1,7 @@
 # Calculo de polarización de la opinión pública
 
 
-# Importación de bases
-
+B2018 <- rio::import(here::here("Data", "Latinobarometro", "2018-Latinobarometro.sav"))
 B2015 <- rio::import(here::here("Data", "Latinobarometro", "2015-Latinobarometro.sav"))
 B2010 <- rio::import(here::here("Data", "Latinobarometro", "2010-Latinobarometro.sav"))
 B2005 <- rio::import(here::here("Data", "Latinobarometro", "2005-Latinobarometro.sav"))
@@ -10,6 +9,7 @@ B1998 <- rio::import(here::here("Data", "Latinobarometro", "1998-Latinobarometro
 B1995 <- rio::import(here::here("Data", "Latinobarometro", "1995-Latinobarometro.sav"))
 
 #Filtro para Uruguay
+Base2018 <- B2018[B2018$IDENPA=="858",]
 Base2015 <- B2015[B2015$IDENPA=="858",]
 Base2010 <- B2010[B2010$IDENPA=="858",]
 Base2005 <- B2005[B2005$idenpa=="858",]
@@ -147,9 +147,3 @@ plot(PolOP, ylim = c(0,5))
 lines(PolOP)
 
 ############################################################
-
-
-
-
-
-
