@@ -3,7 +3,7 @@
 
 library(ggplot2)
 
-###################### Dalton Sin Partidos - OP ######################################
+###################### Dalton Latinobarometro - OP ######################################
 
 # Importación de bases
 
@@ -55,7 +55,6 @@ Base1997 <- B1997[B1997$idenpa=="858",]
 Base1996 <- B1996[B1996$pais=="858",]
 Base1995 <- B1995[B1995$pais=="858",]
 
-B2006$p47st
 
 DaltonOP <- function(Base, VectorIdeologia) {
         
@@ -226,6 +225,8 @@ Dalton_ELITE <- cbind(c(2015, 2010, 2005, 2000, 1995),
                       rep("Elite",5))
 
 
+####################### Graficación ##############################
+
 Dalton <- rbind (Dalton_OP_L, Dalton_ELITE, Dalton_OP_B)
 Dalton <- as.data.frame(Dalton)
 names(Dalton) <- c("Year", "Pol.index", "Type")
@@ -242,5 +243,26 @@ ggplot(Dalton, aes(x=Year, y=Pol.index, group = Type, colour =Type )) +
 
 
 
+
+
+
+
+
+##### Coeficientes de tendencia ######
+
+
+X1 <- (as.numeric(Dalton_OP_B[1,2])-as.numeric(Dalton_OP_B[21,2]))/(as.numeric(Dalton_OP_B[1,1])-as.numeric(Dalton_OP_B[21,1]))
+
+Dalton_OP_L 
+X2<- (as.numeric(Dalton_OP_L[1,2])-as.numeric(Dalton_OP_L[7,2]))/(as.numeric(Dalton_OP_L[1,1])-as.numeric(Dalton_OP_L[7,1]))
+
+Dalton_ELITE
+X3<- (as.numeric(Dalton_ELITE[1,2])-as.numeric(Dalton_ELITE[5,2]))/(as.numeric(Dalton_ELITE[1,1])-as.numeric(Dalton_ELITE[5,1]))
+
+
+Trends <- as.data.frame(cbind(c("Dalton_OP_B", "Dalton_OP_L", "Dalton_Elite"), c(X1,X2,X3)))
+names(Trends) <- c("Index", "Trend")
+
+as.numeric(as.character(Trends[3,2]))/as.numeric(as.character(Trends[1,2]))
 
 
